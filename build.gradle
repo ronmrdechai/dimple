@@ -1,0 +1,37 @@
+plugins {
+  id 'java'
+  id 'application'
+  id 'checkstyle'
+  id 'jacoco'
+}
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile 'info.picocli:picocli:3.9.6'
+  implementation 'com.google.guava:guava:27.0.1-jre'
+  testImplementation 'junit:junit:4.12'
+}
+
+tasks.withType(JavaCompile) {
+  options.compilerArgs << "-Xdiags:verbose" << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
+tasks.withType(AbstractArchiveTask) {
+  preserveFileTimestamps = false
+  reproducibleFileOrder = true
+}
+
+tasks.withType(Test) {
+  testLogging {
+    showStandardStreams = true
+  }
+}
+
+build {
+  dependsOn jacocoTestReport
+}
+
+mainClassName = 'dimple.Cli'
