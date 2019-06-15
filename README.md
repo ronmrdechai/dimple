@@ -1,4 +1,4 @@
-# Dimple: An Exercise in Satisfiability.
+# Dimple: An Exercise in Satisfiability
 
 Dimple is a simple SAT solver written in Java. This is an attempt at learning
 about the _Boolean Satisfiability Problem_ and along the way getting better at
